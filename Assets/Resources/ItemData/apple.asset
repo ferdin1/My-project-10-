@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5972bb7736dc4d44a1f2a4020c2b601, type: 3}
+  m_Name: apple
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: apple
+  itemName: Apple
+  description: Heerlijke rode appel.
+  icon: {fileID: 8249979829172528721, guid: 2a3a822b3a40c2842b3c7768908a5096, type: 3}
+  holdItem: {fileID: 8249979829172528721, guid: 2a3a822b3a40c2842b3c7768908a5096, type: 3}
+  maxDurability: 0
+  stackable: 1
+  maxStack: 16

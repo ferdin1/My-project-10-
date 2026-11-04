@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "unity": {
+      "command": "node",
+      "args": [
+        "C:/Users/ferdi/Documents/unity-mcp/mcp-server/server.js"
+      ]
+    }
+  }
+}

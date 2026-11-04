@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5972bb7736dc4d44a1f2a4020c2b601, type: 3}
+  m_Name: diamond
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: diamond
+  itemName: Diamond
+  description: Zeldzame diamant, stapelbaar tot 64.
+  icon: {fileID: -9119129702149671707, guid: 9c8dee6a27633ae42b61e8fa0edf334f, type: 3}
+  holdItem: {fileID: -9119129702149671707, guid: 9c8dee6a27633ae42b61e8fa0edf334f, type: 3}
+  maxDurability: 0
+  stackable: 1
+  maxStack: 64
+  holdPosition: 0
+  itemPrefab: {fileID: 0}
