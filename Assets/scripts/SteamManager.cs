@@ -1,13 +1,19 @@
 using System;
 using Steamworks;
 using UnityEngine;
-
+using System.Linq;
 public class SteamManager : MonoBehaviour
 {
     public static SteamManager Instance { get; private set; }
 
+    [Tooltip("Uit = geen Steam, gebruikt UnityTransport met IP (handig voor testen).")]
+    [SerializeField] private bool useSteam = true;
+
     [Tooltip("480 = Spacewar, Valve's publieke test-app.")]
     [SerializeField] private uint appId = 480;
+
+    /// <summary>Of Steam gebruikt wordt. -nosteam op de commandline forceert uit.</summary>
+    public bool UseSteam { get; private set; }
 
     private void Awake()
     {
@@ -20,10 +26,16 @@ public class SteamManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        UseSteam = useSteam && !Environment.GetCommandLineArgs().Contains("-nosteam");
+
+        if (!UseSteam)
+        {
+            Debug.Log("[Steam] UIT — we draaien zonder Steam (UnityTransport).");
+            return;
+        }
+
         try
         {
-            // false = async callbacks uit. Wij pompen ze zelf in Update().
-            // Dat moet, want Facepunch-callbacks mogen alleen op de Unity-hoofdthread.
             if (!SteamClient.IsValid)
                 SteamClient.Init(appId, false);
 
@@ -38,29 +50,25 @@ public class SteamManager : MonoBehaviour
 
     private void Update()
     {
-        if (SteamClient.IsValid)
+        if (UseSteam && SteamClient.IsValid)
             SteamClient.RunCallbacks();
     }
 
     private void OnApplicationQuit()
     {
-        SteamClient.Shutdown();
+        if (UseSteam) SteamClient.Shutdown();
     }
 
     private void OnDestroy()
     {
         if (Instance != this) return;
         Instance = null;
-        SteamClient.Shutdown();
+        if (UseSteam) SteamClient.Shutdown();
     }
 
-    /// <summary>
-    /// De transport sloopt bij NetworkManager.Shutdown() de hele SteamClient.
-    /// Hiermee zet je hem weer aan zodat lobby-zoeken daarna blijft werken.
-    /// </summary>
     public void EnsureInitialized()
     {
-        if (SteamClient.IsValid) return;
+        if (!UseSteam || SteamClient.IsValid) return;
 
         try
         {

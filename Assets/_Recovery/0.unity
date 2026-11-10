@@ -151,10 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 1705567665}
-  amountText: {fileID: 752310257}
-  highlightBorder: {fileID: 1601076351}
-  slotButton: {fileID: 90065}
 --- !u!114 &90065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,10 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7763b58cf4984428a951f1d7f18413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::oppak
-  ShowTopMostFoldoutHeaderGroup: 1
-  itemId: diamond
-  amount: 10
-  customDurability: 0
 --- !u!1 &174258980
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,10 +814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 1685639754}
-  amountText: {fileID: 1582794704}
-  highlightBorder: {fileID: 1059994518}
-  slotButton: {fileID: 174258982}
 --- !u!1 &184060918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,10 +1100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 1748586916}
-  amountText: {fileID: 1978538951}
-  highlightBorder: {fileID: 2058834739}
-  slotButton: {fileID: 282621726}
 --- !u!1 &294108449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1191,6 @@ GameObject:
   - component: {fileID: 317213351}
   - component: {fileID: 317213350}
   - component: {fileID: 317213349}
-  - component: {fileID: 317213353}
   m_Layer: 0
   m_Name: Pickup_IronSword
   m_TagString: Untagged
@@ -1352,22 +1335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &317213353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317213348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7763b58cf4984428a951f1d7f18413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::oppak
-  ShowTopMostFoldoutHeaderGroup: 1
-  itemId: iron_sword
-  amount: 1
-  customDurability: 100
 --- !u!1 &367884017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,10 +1862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 1243681160}
-  amountText: {fileID: 1751741523}
-  highlightBorder: {fileID: 77423071}
-  slotButton: {fileID: 431686069}
 --- !u!1 &436740281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +1963,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550853116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44dd247a00edbfa44b77868d755af6ea, type: 3}
   m_Name: 
@@ -2234,10 +2197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 930841009}
-  amountText: {fileID: 367884019}
-  highlightBorder: {fileID: 2006278840}
-  slotButton: {fileID: 606505923}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,6 +2506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daae1b14fafa00a4893fd93fe1e057f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  port: 7777
 --- !u!4 &673416787
 Transform:
   m_ObjectHideFlags: 0
@@ -2571,7 +2531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 744717492}
-  - component: {fileID: 744717491}
+  - component: {fileID: 744717493}
   m_Layer: 0
   m_Name: ItemDatabase
   m_TagString: Untagged
@@ -2579,22 +2539,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &744717491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744717490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff333027716beec42a49615d09192381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemDatabase
-  items:
-  - {fileID: 11400000, guid: f18d2ab96ab26764abd7b47e6bc72847, type: 2}
-  - {fileID: 11400000, guid: 88592af564da5c444b0be1d355e3e982, type: 2}
-  - {fileID: 11400000, guid: 8f84cd2b4ed8ef1459e8912b1f31e4b2, type: 2}
 --- !u!4 &744717492
 Transform:
   m_ObjectHideFlags: 0
@@ -2610,6 +2554,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744717493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744717490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bacf8f6188386af88155586d4cabe06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDataBase
+  items:
+  - {fileID: 11400000, guid: 112f375111b1efe5f858a0330956488c, type: 2}
+  - {fileID: 11400000, guid: 112f375111b1efe5f858a0330956488c, type: 2}
 --- !u!1 &752310254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,10 +2842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 2056388065}
-  amountText: {fileID: 909656333}
-  highlightBorder: {fileID: 200821195}
-  slotButton: {fileID: 765004464}
 --- !u!1 &832548700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,10 +3510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7763b58cf4984428a951f1d7f18413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::oppak
-  ShowTopMostFoldoutHeaderGroup: 1
-  itemId: apple
-  amount: 3
-  customDurability: 0
 --- !u!1 &1071708326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,7 +3662,7 @@ GameObject:
   - component: {fileID: 1149856018}
   m_Layer: 0
   m_Name: Pickup_StoneBlock
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3847,7 +3798,7 @@ Transform:
   m_GameObject: {fileID: 1149856013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: -1.79, y: 2.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3862,13 +3813,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149856013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7763b58cf4984428a951f1d7f18413, type: 3}
+  m_Script: {fileID: 11500000, guid: d1bffc9c47b6dc877b1c84123d606ffc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::oppak
-  ShowTopMostFoldoutHeaderGroup: 1
-  itemId: stone_block
-  amount: 5
-  customDurability: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Pak
+  pickupData: {fileID: 11400000, guid: a4cafa579d57c30f38d7f11f1a9f51fa, type: 2}
 --- !u!1 &1243681158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,10 +4238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 184060920}
-  amountText: {fileID: 643401416}
-  highlightBorder: {fileID: 1892906792}
-  slotButton: {fileID: 1432697724}
 --- !u!1 &1454872151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4430,10 +4374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 2017242838}
-  amountText: {fileID: 986916139}
-  highlightBorder: {fileID: 390114197}
-  slotButton: {fileID: 1454872153}
 --- !u!1 &1468159820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,6 +4403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e077ec2a4c013784b9d152d4ed35a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  useSteam: 0
   appId: 480
 --- !u!4 &1468159822
 Transform:
@@ -5232,10 +5173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 1904829337}
-  amountText: {fileID: 1071708328}
-  highlightBorder: {fileID: 436740281}
-  slotButton: {fileID: 1716156011}
 --- !u!1 &1748586914
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,19 +6225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18719ef9e2dd7a04899fd45eb263cd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
-  inventory: {fileID: 0}
-  selectedItemText: {fileID: 2087765040}
-  slots:
-  - {fileID: 765004467}
-  - {fileID: 2100002212}
-  - {fileID: 606505926}
-  - {fileID: 282621729}
-  - {fileID: 1454872156}
-  - {fileID: 431686072}
-  - {fileID: 174258985}
-  - {fileID: 1716156014}
-  - {fileID: 1432697727}
-  - {fileID: 90064}
 --- !u!114 &2079622443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6658,10 +6582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58ba8a49d63e644494aef22159e5f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
-  iconImage: {fileID: 832548702}
-  amountText: {fileID: 1510091596}
-  highlightBorder: {fileID: 1833147253}
-  slotButton: {fileID: 2100002209}
 --- !u!213 &2141895763
 Sprite:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-
 using Steamworks;
 using Steamworks.Data;
 using Unity.Netcode;
@@ -12,6 +11,12 @@ public class SteamLobbyUI : MonoBehaviour
 
     private Vector2 scroll;
     private Vector2 inviteScroll;
+
+    // IP-veld voor joinen zonder Steam
+    private string joinIp = "127.0.0.1";
+
+    private bool UseSteam =>
+        SteamManager.Instance != null && SteamManager.Instance.UseSteam;
 
     // ---------------- Wereldkeuze ----------------
 
@@ -42,7 +47,8 @@ public class SteamLobbyUI : MonoBehaviour
             GUI.skin.box
         );
 
-        if (!SteamClient.IsValid)
+        // Alleen zeuren over Steam als Steam ook echt aan staat.
+        if (UseSteam && !SteamClient.IsValid)
         {
             GUILayout.Label(
                 "Steam is niet geïnitialiseerd.\n" +
@@ -53,8 +59,15 @@ public class SteamLobbyUI : MonoBehaviour
             return;
         }
 
-        GUILayout.Label($"Ingelogd als: {SteamClient.Name}");
-        GUILayout.Label($"SteamID: {SteamClient.SteamId}");
+        if (UseSteam)
+        {
+            GUILayout.Label($"Ingelogd als: {SteamClient.Name}");
+            GUILayout.Label($"SteamID: {SteamClient.SteamId}");
+        }
+        else
+        {
+            GUILayout.Label("Steam: UIT (testmodus, IP)");
+        }
 
         GUILayout.Space(8);
 
@@ -93,19 +106,26 @@ public class SteamLobbyUI : MonoBehaviour
             if (GameNetworkManager.Instance.IsInLobby &&
                 nm.IsHost)
             {
-                if (GUILayout.Button(
-                    showInvitePanel
-                        ? "Uitnodigen sluiten"
-                        : "Vriend uitnodigen"))
+                if (UseSteam)
                 {
-                    showInvitePanel = !showInvitePanel;
+                    if (GUILayout.Button(
+                        showInvitePanel
+                            ? "Uitnodigen sluiten"
+                            : "Vriend uitnodigen"))
+                    {
+                        showInvitePanel = !showInvitePanel;
+
+                        if (showInvitePanel)
+                            GameNetworkManager.Instance.OpenInviteOverlay();
+                    }
 
                     if (showInvitePanel)
-                        GameNetworkManager.Instance.OpenInviteOverlay();
+                        DrawInvitePanel();
                 }
-
-                if (showInvitePanel)
-                    DrawInvitePanel();
+                else
+                {
+                    GUILayout.Label("Open voor joinen via IP (poort 7777).");
+                }
             }
 
             if (GUILayout.Button("Verbinding verbreken"))
@@ -121,12 +141,10 @@ public class SteamLobbyUI : MonoBehaviour
 
             GUILayout.Space(4);
 
-            // Toon de huidige geselecteerde wereld.
             GUILayout.Label(
                 $"Geselecteerd: {SelectedWorldName}"
             );
 
-            // Knop per wereld.
             for (int i = 0; i < worlds.Length; i++)
             {
                 bool isSelected = selectedWorld == i;
@@ -152,57 +170,79 @@ public class SteamLobbyUI : MonoBehaviour
 
             GUILayout.Space(12);
 
-            // ---------------- LOBBY'S ----------------
-
-            GUI.enabled = !searching;
-
-            if (GUILayout.Button(
-                searching
-                    ? "Zoeken..."
-                    : "Lobby's zoeken"))
-            {
-                RefreshLobbies();
-            }
-
-            GUI.enabled = true;
-
-            GUILayout.Label(
-                $"Gevonden: {lobbies.Length}"
-            );
-
-            scroll = GUILayout.BeginScrollView(
-                scroll,
-                GUILayout.Height(260)
-            );
-
-            foreach (Lobby lobby in lobbies)
-            {
-                string name =
-                    lobby.GetData("LobbyName");
-
-                if (string.IsNullOrEmpty(name))
-                    name = lobby.Id.ToString();
-
-                string world =
-                    lobby.GetData("WorldName");
-
-                if (string.IsNullOrEmpty(world))
-                    world = "?";
-
-                if (GUILayout.Button(
-                    $"{name} [{world}] " +
-                    $"({lobby.MemberCount}/{lobby.MaxMembers})"))
-                {
-                    GameNetworkManager.Instance.JoinLobby(
-                        lobby.Id
-                    );
-                }
-            }
-
-            GUILayout.EndScrollView();
+            if (UseSteam)
+                DrawLobbyBrowser();
+            else
+                DrawIpJoin();
         }
 
         GUILayout.EndArea();
+    }
+
+    // ---------------- Join zonder Steam ----------------
+
+    private void DrawIpJoin()
+    {
+        GUILayout.Label("Joinen via IP:");
+
+        joinIp = GUILayout.TextField(joinIp);
+
+        if (GUILayout.Button("Join"))
+        {
+            GameNetworkManager.Instance.JoinByIp(joinIp);
+        }
+    }
+
+    // ---------------- Lobby browser (Steam) ----------------
+
+    private void DrawLobbyBrowser()
+    {
+        GUI.enabled = !searching;
+
+        if (GUILayout.Button(
+            searching
+                ? "Zoeken..."
+                : "Lobby's zoeken"))
+        {
+            RefreshLobbies();
+        }
+
+        GUI.enabled = true;
+
+        GUILayout.Label(
+            $"Gevonden: {lobbies.Length}"
+        );
+
+        scroll = GUILayout.BeginScrollView(
+            scroll,
+            GUILayout.Height(260)
+        );
+
+        foreach (Lobby lobby in lobbies)
+        {
+            string name =
+                lobby.GetData("LobbyName");
+
+            if (string.IsNullOrEmpty(name))
+                name = lobby.Id.ToString();
+
+            string world =
+                lobby.GetData("WorldName");
+
+            if (string.IsNullOrEmpty(world))
+                world = "?";
+
+            if (GUILayout.Button(
+                $"{name} [{world}] " +
+                $"({lobby.MemberCount}/{lobby.MaxMembers})"))
+            {
+                GameNetworkManager.Instance.JoinLobby(
+                    lobby.Id
+                );
+            }
+        }
+
+        GUILayout.EndScrollView();
     }
 
     // ---------------- Wereld starten ----------------
@@ -213,7 +253,6 @@ public class SteamLobbyUI : MonoBehaviour
             $"[World] Gekozen wereld: {SelectedWorldName}"
         );
 
-        // Laad/maak het JSON-bestand voor de wereld
         WorldManager.Instance.LoadWorld(SelectedWorldName);
 
         GameNetworkManager.Instance.StartLocalGame();
@@ -259,13 +298,12 @@ public class SteamLobbyUI : MonoBehaviour
 
     private static string GetActiveWorldName()
     {
-        var lobby =
-            GameNetworkManager.Instance.CurrentLobby;
+        var gnm = GameNetworkManager.Instance;
 
-        if (lobby.HasValue)
+        if (gnm != null && gnm.CurrentLobby.HasValue)
         {
             string fromLobby =
-                lobby.Value.GetData("WorldName");
+                gnm.CurrentLobby.Value.GetData("WorldName");
 
             if (!string.IsNullOrEmpty(fromLobby))
                 return fromLobby;

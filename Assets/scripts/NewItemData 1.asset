@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5972bb7736dc4d44a1f2a4020c2b601, type: 3}
+  m_Name: NewItemData 1
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: 1
+  itemName: de blok
+  description: de blok
+  icon: {fileID: 388179561756905204, guid: ed08455d0371bfc40b5e80a033429ffd, type: 3}
+  holdItem: {fileID: 388179561756905204, guid: ed08455d0371bfc40b5e80a033429ffd, type: 3}
+  maxDurability: 20
+  stackable: 0
+  maxStack: 1
+  itemPrefab: {fileID: 4915869894046420558, guid: 879b257b66de3b4c18c8d837c873698f, type: 3}
